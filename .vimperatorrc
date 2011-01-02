@@ -1,0 +1,295 @@
+" vim: ft=vim foldmarker={{{,}}} tw=80
+" Last edit 2008-02-25
+" Information
+" {{{
+" File:     ~/.vimperatorrc
+"
+" Author:   Kalkin Sam <kalkin-@web.de>
+"
+" Homepage: http://blog.blase16.de/
+"
+" Purpose:  This is a configuration file for Vimperator. Vimperator is a free
+"           browser add-on for Firefox, which makes it look and behave like
+"           the Vim text editor.
+"
+" Version:  This file was used and written for the Vimperator 0.5.3
+"
+" Notes:    First of all this are the settings that I use! You HAVE TO EDIT
+"           some things e. g. the bookmark and key mappings at the end of the
+"           file, or the defsearch settings. It should be easy to change them,
+"           because every setting is well documented.
+"       
+"           If you never used Vi or Vim you should first learn to use one of
+"           these editors, before you use Vimperator
+"
+" Structure:
+"           There are three^W two kinds of things which are defined in this
+"           file: settings ("set") and mappings ("map").
+"               - Settings affect the behaviour of commands.
+"               - Mappings maps a key sequence to a command.
+"               - There are no abbreviations because it's a BROWSER! not vim :)
+"
+"           The settings are sorted alphabetically to make it easier to access
+"           a specific item and basically the simplest way to sort data :-) I
+"           think I mentioned all possible settings, if i miss something,
+"           please mail me.
+"
+"           Every setting has a short and a long name. It doesn't matter which
+"           one you use for the sake of completeness both are documented.  For
+"           example:
+"       ,------
+"       |   |'activate'| define when tabs are automatically activated strin-
+"       |                glist (default: homepage,quickmark,tabopen,paste)
+"       |    set act=homepage,quickmark,tabopen,paste
+"       `------
+"           This time is the long name set in |' '| and the short is used in
+"           the set command. 
+"
+"           Settings which you only can turn on or off (boolean) are unset
+"           with an no Prefix. For example:
+"       ,------
+"       |   |'hlsearch'| Highlight previous search pattern matches
+"       |   set nohlsearch
+"       `------
+"           Or of couse you can use the negated short form
+"       ,------
+"       |   set nohls
+"       `------
+"           If I commented out a setting, than the default values are listed
+"           and of course used.
+"
+"           Lines starting with an inverted comma (") are comments.
+"           Vimperator allows to give special characters by writing them in a
+"           special notation.  The notation encloses descriptive words in
+"           angle brackets
+"           (<>). The most common characters are:
+"               - <C-M> for control-m
+"               - <C-V> for control-v which quotes the following character
+"               - <ESC> for the escape character.
+"               - <Fn>  for F1, F2, ..
+"               - <C-n> for control-n (i. e. strg-a, strg-k, ..)
+"               - <Space> for space :)
+" 
+" 
+" Warning:  To provide the most authentic Vim experience, the Firefox menubar
+"           and toolbar were hidden. If you really need them, type :set
+"           guioptions+=mT to get them back. If you don't like Vimperator at
+"           all, type :addons and remove/disable it. If you like it, but can't
+"           remember the shortcuts, enter :help to get the help window.  (I
+"           have disabled the F1 shortcut)
+" 
+" }}}
+
+" |'activate'| define when tabs are automatically activated
+"              stringlist (default: homepage,quickmark,tabopen,paste)
+" set act=homepage,quickmark,tabopen,paste 
+
+" |'complete'| Items which are completed at the :[tab]open prompt, order
+"              is imporant 
+" ,-{{{ Available items:
+" |     - s: Search engines and keyword URLs
+" |     - f: Local files
+" |     - b: Bookmarks
+" |     - h: History
+" `-}}}
+"set cpt=hbsf
+
+" |'defsearch'| Set the default search engine (default google)
+" I have a bookmark for a special google version which is mapped to g:
+" http://72.14.207.99/search?q=%s&num=%i&ie=utf-8&oe=utf-8&num=100&safe=off
+" For more information about searching the web look at
+" http://www.searchlores.org/
+set ds=g
+
+" |'extendedhinttags'| XPath string of hintable elements activated by ';'
+" set eht=//*[@onclick or @onmouseover or @onmousedown or @onmouseup or @oncommand or @class='lk' or @class='s'] | //input[not(@type='hidden')] | //a | //area | //iframe | //textarea | //button | //select | //xhtml:*[@onclick or @onmouseover or @onmousedown or @onmouseup or @oncommand or @class='lk' or @class='s'] | //xhtml:input[not(@type='hidden')] | //xhtml:a | //xhtml:area | //xhtml:iframe | //xhtml:textarea | //xhtml:button | //xhtml:select
+
+" |'focusedhintstyle'| CSS specification of focused hints
+" set fhs=z-index:5000; font-family:monospace; font-size:12px; color:ButtonText; background-color:ButtonShadow; border-color:ButtonShadow; border-width:1px; border-style:solid; padding:0px 1px 0px 1px; position:absolute;)
+
+" |'fullscreen'| Show the current window fullscreen
+" set nofs
+
+" |'guioptions'| Show or hide the menu, toolbar and bookmark bar
+" ,-{{{ Available items:
+" |       - m menubar
+" |       - T toolbar
+" |       - b bookmark bar
+" `- }}}
+set go=
+
+" |'hintchars'| String of single characters which can be used to follow hints
+" set hc=hlasdfgyuiopqwertnmzxcvb
+
+" |'hintstyle'| CSS specification of unfocused hints
+" set hs=z-index:5000; font-family:monospace; font-size:12px; color:white; background-color:red; border-color:ButtonShadow; border-width:0px; border-style:solid; padding:0px 1px 0px 1px; position:absolute;
+
+" |'hinttags'| XPath string of hintable elements activated by 'f' and 'F'
+" set ht=//*[@onclick or @onmouseover or @onmousedown or @onmouseup or @oncommand or @class='lk' or @class='s'] | //input[not(@type='hidden')] | //a | //area | //iframe | //textarea | //button | //select | //xhtml:*[@onclick or @onmouseover or @onmousedown or @onmouseup or @oncommand or @class='lk' or @class='s'] | //xhtml:input[not(@type='hidden')] | //xhtml:a | //xhtml:area | //xhtml:iframe | //xhtml:textarea | //xhtml:button | //xhtml:select
+
+" |'hlsearch'| Highlight previous search pattern matches
+set hls
+
+" |'hlsearchstyle'| CSS specification of highlighted search items
+" set hlss=color: black; background-color: yellow; padding: 0; display: inline;
+
+" |'ignorecase'| Ignore case in search patterns
+" set ic
+
+" |'incsearch'| Show where the search pattern matches as it is typed
+"               NOTE: Incremental searching currently only works in
+"               the forward direction
+" set is
+
+" |'laststatus'| Determines when a window will have a status line
+" ,-{{{ Possible values:
+" |      - 0: never   
+" |      - 1: only if there are multiple windows
+" |      _ 2: always
+" `-}}}
+"   NOTE: laststatus=1 not implemented yet.
+"         No idea why it's mentioned in the Manual. :-|
+" set ls=2
+
+" |'linksearch'| Limit the search to hyperlink text
+" set nolks
+
+" |'more'| Pause the message list window when more than one screen of listings
+"          is displayed
+" set more
+
+" |'maxhints'| Maximum number of simultaneously shown hints
+" set mh=250
+
+" |'popups'| Where to show requested popup windows. This does not apply to
+"            windows which are opened by middle clicking a link, they always
+"            open in a new tab
+" ,-{{{ Possible values:
+" |      - 0: Force to open in the current tab 
+" |           NOTE: this can stop some web sites from working correctly!
+" |      - 1: Always open in a new tab
+" |      - 2: Open in a new window if it has a specific requested size
+" |      - 3: Always open in a new window
+" `-}}}
+" NOTE: This option does not change the popup blocker of Firefox in any way.
+set pps=2
+
+
+" |'preload'| Speed up first time history/bookmark completion
+set preload
+
+" |'previewheight'| Default height for preview window
+" set pvh
+" NOTE: Option currently disabled
+
+" |'scroll'| Number of lines to scroll with C-u and C-d commands
+"            The number of lines scrolled defaults to half the window size.
+"            When a {count} is specified to the <C-u> or <C-d> commands this
+"            is used to set the value of 'scroll' and also used for the current
+"            command. The value can be reset to half the window height with 
+"            :set scroll=0
+set scroll=20
+
+" |'showmode'| Show the current mode in the command line
+" set smd
+
+" |'showstatuslinks'| Show the destination of the link under the cursor in the
+"                     status bar
+" ,-{{{ Possible values:
+" |      - 0: Don't show link destination
+" |      - 1: Show the link in the status line (default)
+" |      - 2: Show the link in the command line
+" `-}}}
+set ssli=2
+
+" |'showtabline'| Control when to show the tab bar of opened web pages
+" ,-{{{ Possible values:
+" |      - 0: Never show tab bar
+" |      - 1: Show tab bar only if more than one tab is open
+" |      - 2: Always show tab bar (default)
+" `-}}}
+" NOTE: showtabline=1 implemented works only >=5.3
+set stal=2
+
+" |'smartcase'|case'| Search casesensetive if he pattern contains uppercase
+"                     characters. This is only used if the 'ignorecase' option
+"                     is set.
+" set scs
+
+" |'titlestring'| Change the title of the browser window
+" In order to distract THEM
+set titlestring=BROWSER
+
+" |'usermode'| Show current website with a minimal style sheet to make it
+"              easily accessible
+" set noum
+
+" |'verbose'| Define which type of messages are logged They are printed to the
+"             error console which can be shown with :javascript!. The highest
+"             value is 9, being the most verbose mode.
+" set vbs=0
+
+" |'visualbell'| Use visual bell instead of beeping on errors
+set vb
+
+" |'visualbellstyle'| CSS specification of the visual bell
+"                     To hide the visual bell use a value of \"display: none;"
+"                     or unset it with :set t_vb=
+" set t_vb=
+
+" |'wildmode'| Define how command line completion works. It is a comma-separated
+"              list of parts, where each part specifies what to do for each
+"              consecutive use of the completion key. The first part specifies
+"              the behavior for the first use of the completion key, the second
+"              part for the second use, etc.
+" ,-{{{ Possible values:
+" |     - ''                Complete only the first match
+" |     - 'full'            Complete the next full match. After the last, the
+" |                         original string is used.
+" |     - 'longest'         Complete till the longest common string.
+" |     - 'list'            When more than one match, list all matches.
+" |     - 'list:full'       When more than one match, list all matches and
+" |                         complete first match.
+" |     - 'list:longest'    When more than one match, list all matches and
+" |                         complete till the longest common string.
+" `-}}}
+" NOTE: When there is only a single match, it is fully completed regardless of
+"       the case.
+" set wim=list:full
+
+" |'wildoptions'| Change how command line completion is done
+" set wop=sort Always sorts completion list, overriding the 'complete' option
+" set wop=''
+
+
+" Map tabnextand tabprevious
+map a :tabprevious<CR>
+map s  :tabnext<CR>
+
+" Map q to select the alternate tab
+map q <C-^> 
+
+map e :tabs<CR>
+
+map i I
+
+" Map the scrolling
+map j <C-d>
+map k <C-u>
+" h l should go through the history
+map h H
+map l L
+
+" scroll left or right
+map S <right>
+map A <left>
+
+map t :tabopen<Space> 
+map T :tabopen!<Space> 
+
+" some usefull mappings
+map w :
+map <F1> <NOP> 
+
+" map :o to search bookmarks
+set complete=hsb
